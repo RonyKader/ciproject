@@ -28,7 +28,14 @@
             <small>Custom Form Section</small>
         </h1>
         <!-- END PAGE TITLE-->    
+        <?php 
+            $FlsMsg = $this->session->flashdata('FlsMsg');
+            if ( isset( $FlsMsg )) 
+            {
+               echo $FlsMsg;
+            }
 
+         ?>
         <div class="row">
             <div class="col-md-6">
                 <div class="portlet box green">
@@ -82,7 +89,7 @@
                                 <?php 
                                     $data = array(
                                         'type' => 'file',
-                                        'name'  =>  'profilePic',
+                                        'name'  =>  'image',
                                         'id'    =>  'profilePic',
                                         'class' =>  'form-control' 
                                         );

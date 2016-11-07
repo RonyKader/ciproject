@@ -2,6 +2,7 @@
 
 function PrintR($data)
 {
-	echo "Rony Kader";
+	echo "<pre>";
+	print_r( $data );
 	exit();
 }

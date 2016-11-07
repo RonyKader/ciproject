@@ -22,10 +22,42 @@ class Developer extends CI_Controller
 		$this->load->view( 'templates/template',$data );
 	}
 
+	/**
+	 * Service Check Method
+	 */
 	public function serviceCheck()
 	{
 		$ajaxData['getData'] = $this->Developer_model->get_serviceInfo();
 		echo json_encode($ajaxData['getData']);
 		// echo $ajaxData;
+	}
+
+	/**
+	 * Service Add Method
+	 */
+	public function serviceAdd()
+	{
+
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$this->load->library('upload', $config);
+		
+		if ( ! $this->upload->do_upload('image'))
+		{
+			$ImageData =  $this->upload->display_errors();
+			// $this->session->set_flashdata('FlsMsg',$this->alert->danger($ImageData));
+			// redirect( 'Developer/createForm' );
+		}
+		else
+		{
+			$ImageData = $this->upload->data();
+		}
+		if ( isset( $ImageData ) ) 
+		{
+			 echo "Lol";
+		}
+		printR( $ImageData );
+		$data = $this->input->post();
+		printR($data);
 	}
 }
