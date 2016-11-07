@@ -48,7 +48,7 @@
                             $data = array(
                                 'name'  => 'serviceadd'
                                 );
-                            echo form_open('Developer/serviceAdd', $data );
+                            echo form_open_multipart('Developer/serviceAdd', $data );
                          ?>
                             <div class="form-body">
                                 <div class="form-group">
@@ -77,18 +77,40 @@
                                     ?>
                                     </select>
                                 </div>
+
+                                <div class="form-group">
+                                <?php 
+                                    $data = array(
+                                        'type' => 'file',
+                                        'name'  =>  'profilePic',
+                                        'id'    =>  'profilePic',
+                                        'class' =>  'form-control' 
+                                        );
+                                    echo form_upload( $data );
+                                 ?>
+                                </div>
                                 <div class="form-group last">
-                                <table id="output" class="hidden">
-                                        <tr>
-                                            <th>City</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </table>
+                                <table id="output" class="table table-inverse hidden">
+                                </table>
                                 </div>
                             </div>
                             <div class="form-actions">
-                                <button type="submit" class="btn green">Submit</button>
-                                <button type="button" class="btn default">Cancel</button>
+                            <?php 
+                                $data = array(
+                                    'type'  => 'submit',
+                                    'class' =>  'btn green',
+                                    'value' =>  'Submit'
+                                    );
+                                echo form_submit( $data );
+                            ?>
+                            <?php 
+                                $data = array(
+                                    'type'  => 'reset',
+                                    'class' =>  'btn default',
+                                    'value' =>  'Reset'
+                                    );
+                                echo form_reset( $data );
+                            ?>
                             </div>
                         <?php echo form_close(); ?>
                         <!-- END FORM-->
