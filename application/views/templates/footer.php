@@ -683,7 +683,7 @@
                         if(output)
                         {
                             var len = output.length;
-                            var txt = "";
+                            var txt = "<tr><th>Name</th><th>Date</th></tr>";
                             if(len > 0)
                             {
                                 for(var i=0;i<len;i++)
@@ -696,7 +696,7 @@
 
                                 if(txt != "")
                                 {
-                                   $("#output").append(txt).removeClass("hidden");
+                                   $("#output").html(txt).removeClass("hidden");
                                 }
                             }
                         }

@@ -54,3 +54,5 @@ ERROR - 2016-11-04 18:31:24 --> Severity: Notice --> Undefined index: getData F:
 ERROR - 2016-11-04 18:31:32 --> Severity: Notice --> Undefined index: getData F:\PROJECT\htdocs\ciproject\application\controllers\Developer.php 28
 ERROR - 2016-11-04 18:45:46 --> 404 Page Not Found: Developer/favicon.ico
 ERROR - 2016-11-04 19:25:41 --> 404 Page Not Found: Developer/favicon.ico
+ERROR - 2016-11-04 19:37:40 --> 404 Page Not Found: Developer/favicon.ico
+ERROR - 2016-11-04 19:39:36 --> 404 Page Not Found: Developer/favicon.ico
