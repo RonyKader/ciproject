@@ -58,7 +58,29 @@ BEGIN CONTAINER -->
                         </li>
                     </ul>
                 </li>
-                <!-- END OF DEVELOPER SECTION -->              
+                <!-- END OF DEVELOPER SECTION -->
+
+                <!-- START OF USER SECTION -->
+                <li class="nav-item">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class=" icon-wrench"></i>
+                        <span class="title">User Section</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="layout_disabled_menu.html" class="nav-link ">
+                                <span class="title">Create User</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="layout_full_height_portlet.html" class="nav-link ">
+                                <span class="title">User List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- END OF USER SECTION -->              
 
             </ul>
             <!-- END SIDEBAR MENU -->
