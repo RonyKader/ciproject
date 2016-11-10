@@ -20,4 +20,15 @@ class Developer_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function createService($data)
+	{
+		$data = $this->security->xss_clean($data);
+		$query = $this->db->insert('master_service',$data);
+		if ( $query ) :
+			return true;
+		else:
+			return false;
+		endif;
+	}
 }

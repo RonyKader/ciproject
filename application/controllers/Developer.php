@@ -37,27 +37,63 @@ class Developer extends CI_Controller
 	 */
 	public function serviceAdd()
 	{
+		if ( $this->input->server('REQUEST_METHOD') == 'POST' ) 
+		{
+		   	$config['upload_path'] = './assets/uploads/';
+		   	$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		   	// $config['max_size']    = '100000000';
+		   	// $config['overwrite'] = TRUE;
+		   	// $config['remove_spaces'] = TRUE;
+		   	// $config['encrypt_name'] = FALSE;
 
-		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$this->load->library('upload', $config);
+		   	$this->load->library('upload', $config);
+		   	$this->upload->do_upload('image');
+
+		   	$image_path = $this->upload->data();
+		   	$gidsimg = $image_path["file_name"];
+
+		   	// printR( $image_path ); 
+		   	// var_dump($image_path);
+		   	$this->upload->display_errors();
+
+		   	$data = array(
+		     	'restaurant_id'	=> $this->input->post('restaurant'),
+		     	'service_id' 		=> $this->input->post('service'),
+		     	'image' 			=> "assets/uploads/".$gidsimg
+		   	);
+
+		   	$createService = $this->Developer_model->createService($data);
+		   	if ( $createService ) :
+		   		$this->session->set_flashdata( 'FlsMsg',$this->alert->success('Service Add Process Success') );
+		   		redirect( 'Developer/createForm');
+		   	else:
+		   		$this->session->set_flashdata( 'FlsMsg',$this->alert->danger('Service Add Process Fail') );
+		   		redirect( 'Developer/createForm');
+		   	endif;	
+
+		}
+
+
+		// $config['upload_path'] = './uploads/';
+		// $config['allowed_types'] = 'gif|jpg|png';
+		// $this->load->library('upload', $config);
 		
-		if ( ! $this->upload->do_upload('image'))
-		{
-			$ImageData =  $this->upload->display_errors();
-			// $this->session->set_flashdata('FlsMsg',$this->alert->danger($ImageData));
-			// redirect( 'Developer/createForm' );
-		}
-		else
-		{
-			$ImageData = $this->upload->data();
-		}
-		if ( isset( $ImageData ) ) 
-		{
-			 echo "Lol";
-		}
-		printR( $ImageData );
-		$data = $this->input->post();
-		printR($data);
+		// if ( ! $this->upload->do_upload('image'))
+		// {
+		// 	$ImageData =  $this->upload->display_errors();
+		// 	// $this->session->set_flashdata('FlsMsg',$this->alert->danger($ImageData));
+		// 	// redirect( 'Developer/createForm' );
+		// }
+		// else
+		// {
+		// 	$ImageData = $this->upload->data();
+		// }
+		// if ( isset( $ImageData ) ) 
+		// {
+		// 	 echo "Lol";
+		// }
+		// printR( $ImageData );
+		// $data = $this->input->post();
+		// printR($data);
 	}
 }
