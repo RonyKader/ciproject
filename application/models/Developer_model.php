@@ -31,4 +31,26 @@ class Developer_model extends CI_Model
 			return false;
 		endif;
 	}
+
+
+	public function getServiceInfo($limit,$ofset)
+	{
+		$this->db->select('ms.*,rs.id AS restId,rs.restaurantname,sr.id as serviceId,sr.servicename');
+		$this->db->from('master_service AS ms');
+		$this->db->join('restaurant AS rs','ms.restaurant_id = rs.id');
+		$this->db->join('services AS sr','ms.service_id = sr.id');
+		$this->db->order_by('id ASC');
+		$this->db->limit($limit,$ofset);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function totalServiceRow()
+	{
+		$this->db->select('*');
+		$this->db->from('master_service');
+		$query = $this->db->get();
+		return $query->num_rows();
+
+	}
 }

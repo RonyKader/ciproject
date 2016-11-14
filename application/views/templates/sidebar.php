@@ -1,4 +1,4 @@
-BEGIN CONTAINER -->
+<!--BEGIN CONTAINER -->
 <div class="page-container">
     <!-- BEGIN SIDEBAR -->
     <div class="page-sidebar-wrapper">
